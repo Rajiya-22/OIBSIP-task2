@@ -3,135 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Temperature Converter</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
         }
 
-        header {
-            background-color: #3498db;
+        #converter {
+            background-color: #2ecc71; /* Green color */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+            margin: 20px;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #fff; /* White text for contrast */
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            margin-bottom: 20px;
+            padding: 15px;
+            font-size: 18px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #27ae60; /* Darker green border */
+            border-radius: 5px;
+            outline: none;
+        }
+
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fff" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z" fill="%23fff"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        button {
+            background-color: #27ae60; /* Darker green button */
             color: #fff;
-            padding: 1em;
-            text-align: center;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
         }
 
-        nav {
-            background-color: #2980b9;
-            padding: 1em;
-            text-align: center;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1em;
-            font-size: 1.2em;
-        }
-
-        section {
-            text-align: center;
-            padding: 2em;
-        }
-
-        .about-me {
-            background-color: #ecf0f1;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 1em;
-        }
-
-        .skills {
-            background-color: #ecf0f1;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 1em;
-        }
-
-        .projects {
-            background-color: #ecf0f1;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 1em;
-        }
-
-        .contact {
-            background-color: #ecf0f1;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 1em;
-        }
-
-        footer {
-            color: #777;
-            padding: 1em;
-            text-align: center;
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #fff; /* White text for contrast */
         }
     </style>
 </head>
 <body>
+    <div id="converter">
+        <h1>Temperature Converter</h1>
+        <input type="number" id="temperatureInput" placeholder="Enter temperature" required>
+        <select id="unitSelect">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+        </select><br>
+        <button onclick="convertTemperature()">Convert</button>
+        <div id="result"></div>
+    </div>
 
-    <header>
-        <h1>Your Name</h1>
-        <p>Web Developer | Designer | Innovator</p>
-    </header>
+    <script>
+        function convertTemperature() {
+            const temperatureInput = parseFloat(document.getElementById('temperatureInput').value);
+            const unitSelect = document.getElementById('unitSelect').value;
+            let result;
 
-    <nav>
-        <a href="#about">About Me</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
+            if (isNaN(temperatureInput)) {
+                alert('Please enter a valid number for temperature.');
+                return;
+            }
 
-    <section id="about" class="about-me">
-        <h2>About Me</h2>
-        <p>Welcome to my portfolio! I am a passionate web developer and designer with a keen interest in creating innovative solutions. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel justo vitae lacus tincidunt feugiat.</p>
-    </section>
-
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML5</li>
-            <li>CSS3</li>
-            <li>JavaScript</li>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>UI/UX Design</li>
-        </ul>
-    </section>
-
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <div>
-            <h3>Project 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel justo vitae lacus tincidunt feugiat.</p>
-        </div>
-        <div>
-            <h3>Project 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel justo vitae lacus tincidunt feugiat.</p>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Feel free to reach out to me. I'm open to collaborations and new opportunities.</p>
-        <p>Email: yourname@example.com</p>
-        <p>LinkedIn: linkedin.com/in/yourname</p>
-        <p>GitHub: github.com/yourusername</p>
-    </section>
-
-    <footer>
-        &copy; 2024 Your Name. All rights reserved.
-    </footer>
+            if (unitSelect === 'celsius') {
+                result = (temperatureInput * 9/5) + 32;
+                document.getElementById('result').innerHTML = `${temperatureInput} Celsius is ${result.toFixed(2)} Fahrenheit.`;
+            } else if (unitSelect === 'fahrenheit') {
+                result = (temperatureInput - 32) * 5/9;
+                document.getElementById('result').innerHTML = `${temperatureInput} Fahrenheit is ${result.toFixed(2)} Celsius.`;
+            } else if (unitSelect === 'kelvin') {
+                result = temperatureInput + 273.15;
+                document.getElementById('result').innerHTML = `${temperatureInput} Kelvin is ${result.toFixed(2)} Celsius.`;
+            }
+        }
+    </script>
 
 </body>
 </html>
